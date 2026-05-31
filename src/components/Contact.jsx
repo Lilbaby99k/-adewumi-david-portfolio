@@ -48,17 +48,16 @@ export default function Contact() {
     } else {
       // Send email notification via EmailJS
       emailjs.send(
-        'service_5bhh0j7',
-        'template_6aq78tj',
-        {
-          name: form.name,
-          email: form.email,
-          subject: form.subject,
-          message: form.message,
-        },
-        'KFhSffXmrwysGs57O'
-      );
-
+  'service_mt3ksgb',
+  'template_enjqx8q',
+  {
+    name: form.name,
+    email: form.email,
+    subject: form.subject,
+    message: form.message,
+  },
+  '70Ig10jvOwxZUuLl4'
+);
       setSending(false);
       setSuccess(true);
       setForm({ name: '', email: '', subject: '', message: '' });
