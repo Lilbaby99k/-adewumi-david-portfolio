@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { supabase } from '../supabase';
 import './Contact.css';
+import emailjs from 'emailjs-com';
 
 const INFO = [
   { icon: 'fas fa-envelope', title: 'Email', value: 'davidlovemathematics@gmail.com' },
@@ -33,6 +34,7 @@ export default function Contact() {
     setSending(true);
     setError('');
 
+    // Save to Supabase
     const { error } = await supabase.from('contacts').insert([{
       name: form.name,
       email: form.email,
@@ -44,6 +46,19 @@ export default function Contact() {
       setSending(false);
       setError('Something went wrong. Please try again!');
     } else {
+      // Send email notification via EmailJS
+      emailjs.send(
+        'service_5bhh0j7',
+        'template_6aq78tj',
+        {
+          name: form.name,
+          email: form.email,
+          subject: form.subject,
+          message: form.message,
+        },
+        'KFhSffXmrwysGs57O'
+      );
+
       setSending(false);
       setSuccess(true);
       setForm({ name: '', email: '', subject: '', message: '' });
