@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './Contact.css';
+import emailjs from 'emailjs-com';
 
 const INFO = [
   { icon: 'fas fa-envelope', title: 'Email', value: 'davidlovemathematics@gmail.com' },
@@ -27,16 +28,26 @@ export default function Contact() {
 
   const handleChange = e => setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
 
-  const handleSubmit = e => {
+const handleSubmit = e => {
     e.preventDefault();
     setSending(true);
-    // Replace this setTimeout with your real API / EmailJS call
-    setTimeout(() => {
+
+    emailjs.sendForm(
+      'service_5bhh0j7',
+      'template_6aq78tj',
+      e.target,
+      'KFhSffXmrwysGs57O'
+    )
+    .then(() => {
       setSending(false);
       setSuccess(true);
       setForm({ name: '', email: '', subject: '', message: '' });
       setTimeout(() => setSuccess(false), 5000);
-    }, 1200);
+    })
+    .catch(() => {
+      setSending(false);
+      alert('Something went wrong. Please try again!');
+    });
   };
 
   return (
