@@ -62,19 +62,19 @@ export default function Hero() {
 
           {/* Social Icons */}
           <div className="hero__socials">
-            <a href="https://facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook">
+            <a href="https://www.facebook.com/share/1BVVpsDskL/" target="_blank" rel="noreferrer" aria-label="Facebook">
               <i className="fab fa-facebook-f" />
             </a>
-            <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram">
+            <a href="https://www.instagram.com/dara467366?igsh=MTYzOHg1dTIzamRjdw==" target="_blank" rel="noreferrer" aria-label="Instagram">
               <i className="fab fa-instagram" />
             </a>
-            <a href="https://twitter.com" target="_blank" rel="noreferrer" aria-label="Twitter">
+            <a href="https://x.com/Adewum83876Dave" target="_blank" rel="noreferrer" aria-label="Twitter">
               <i className="fab fa-x-twitter" />
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/in/adewumi-david-oluwadarasimi-b42807332?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noreferrer" aria-label="LinkedIn">
               <i className="fab fa-linkedin-in" />
             </a>
-            <a href="https://github.com" target="_blank" rel="noreferrer" aria-label="GitHub">
+            <a href="https://github.com/Lilbaby99k" target="_blank" rel="noreferrer" aria-label="GitHub">
               <i className="fab fa-github" />
             </a>
           </div>
