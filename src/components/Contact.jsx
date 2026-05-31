@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { supabase } from '../supabase';
 import './Contact.css';
-import emailjs from 'emailjs-com';
 
 const INFO = [
   { icon: 'fas fa-envelope', title: 'Email', value: 'davidlovemathematics@gmail.com' },
@@ -13,6 +13,7 @@ export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
   const [sending, setSending] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [error, setError] = useState('');
   const ref = useRef(null);
 
   useEffect(() => {
@@ -21,33 +22,33 @@ export default function Contact() {
         if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
       });
     }, { threshold: 0.08 });
-
     ref.current?.querySelectorAll('.reveal').forEach(el => obs.observe(el));
     return () => obs.disconnect();
   }, []);
 
   const handleChange = e => setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
 
-const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
     setSending(true);
+    setError('');
 
-    emailjs.sendForm(
-      'service_5bhh0j7',
-      'template_6aq78tj',
-      e.target,
-      'KFhSffXmrwysGs57O'
-    )
-    .then(() => {
+    const { error } = await supabase.from('contacts').insert([{
+      name: form.name,
+      email: form.email,
+      subject: form.subject,
+      message: form.message,
+    }]);
+
+    if (error) {
+      setSending(false);
+      setError('Something went wrong. Please try again!');
+    } else {
       setSending(false);
       setSuccess(true);
       setForm({ name: '', email: '', subject: '', message: '' });
       setTimeout(() => setSuccess(false), 5000);
-    })
-    .catch(() => {
-      setSending(false);
-      alert('Something went wrong. Please try again!');
-    });
+    }
   };
 
   return (
@@ -128,6 +129,12 @@ const handleSubmit = e => {
             {success && (
               <div className="contact__success">
                 <i className="fas fa-check-circle" /> Message sent! I'll get back to you soon.
+              </div>
+            )}
+
+            {error && (
+              <div className="contact__error">
+                <i className="fas fa-exclamation-circle" /> {error}
               </div>
             )}
           </form>

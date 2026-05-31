@@ -110,6 +110,17 @@
   align-items: center;
   gap: 0.5rem;
 }
+.contact__error {
+  color: #ef4444;
+  font-size: 0.85rem;
+  padding: 0.75rem 1rem;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
 
 @media (max-width: 1024px) {
   .contact__inner { grid-template-columns: 1fr; gap: 2.5rem; }
