@@ -34,7 +34,7 @@ export default function About() {
                 Put your photo in /public and reference it as "/your-photo.jpg"
               */}
               <img
-                src="https://ui-avatars.com/api/?name=Adewumi+David&size=600&background=161b22&color=00b4d8&bold=true&font-size=0.25"
+                src="/david.jpg"
                 alt="Adewumi David"
               />
             </div>

@@ -109,7 +109,7 @@ export default function Hero() {
                 Place your photo in the /public folder.
               */}
               <img
-                src="https://ui-avatars.com/api/?name=Adewumi+David&size=500&background=161b22&color=00b4d8&bold=true&font-size=0.28"
+                src="/david.jpg"
                 alt="Adewumi David"
               />
             </div>
