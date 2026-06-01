@@ -17,14 +17,23 @@ export function AdminProvider({ children }) {
     fetchAll();
   }, []);
 
-  const fetchAll = async () => {
+ const fetchAll = async () => {
     setLoading(true);
     try {
-      const [{ data: p }, { data: b }, { data: t }] = await Promise.all([
+      const [
+        { data: p, error: pe },
+        { data: b, error: be },
+        { data: t, error: te }
+      ] = await Promise.all([
         supabase.from('projects').select('*').order('created_at', { ascending: true }),
         supabase.from('blogs').select('*').order('created_at', { ascending: false }),
         supabase.from('testimonials').select('*').order('created_at', { ascending: true }),
       ]);
+
+      if (pe) console.error('Projects error:', pe);
+      if (be) console.error('Blogs error:', be);
+      if (te) console.error('Testimonials error:', te);
+
       setProjects(p || []);
       setBlogs(b || []);
       setTestimonials(t || []);
