@@ -88,7 +88,7 @@ export default function Hero() {
               <i className="fas fa-briefcase" /> Hire me
             </button>
             <a
-              href="https://docs.google.com/document/d/1ALhlu1QfHJbLrrvo-zvrdhmMHwDc2NrCcsuBTt5lVpc/edit?usp=sharing"
+              href="https://docs.google.com/document/d/1DB3jXhEbjyxXwwLqmRIzeL5f8SCWLE1PZ98Tg36BfgY/edit?usp=sharing"
               className="btn btn-outline"
               target="_blank"
               rel="noreferrer"
